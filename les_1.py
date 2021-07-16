@@ -71,7 +71,7 @@ def task_5() -> None:
 
     chars = input('Введите две латинские буквы: ').split()
     pos_char1, pos_char2 = map(lambda x: ord(x) - 96, chars)
-    result = pos_char2 - pos_char1 - 1 if pos_char1 < pos_char2 else pos_char1 - pos_char2 - 1
+    result = abs(pos_char1 - pos_char2) - 1
     print(f'{chars[0]}: {pos_char1}, {chars[1]}: {pos_char2},\nкол-во букв между ними: {result}')
 
 
