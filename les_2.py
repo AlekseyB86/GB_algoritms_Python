@@ -1,3 +1,6 @@
+from random import randint
+
+
 def task_1() -> None:
     """1. Написать программу, которая будет складывать, вычитать,
     умножать или делить два числа. Числа и знак операции вводятся пользователем.
@@ -76,14 +79,14 @@ def task_4() -> None:
     """4. Найти сумму n элементов следующего ряда чисел: 1 -0.5 0.25 -0.125 ...
     Количество элементов (n) вводится с клавиатуры."""
 
-    # 1 variant
-    n = int(input('Enter number n:'))
-    num = -2
-    nums = []
-    for _ in range(n):
-        num /= -2
-        nums.append(num)
-    print(f'Сумма элементов ряда чисел: {" ".join(map(str, nums))} = {sum(nums)}')
+    # # 1 variant
+    # n = int(input('Enter number n:'))
+    # num = -2
+    # nums = []
+    # for _ in range(n):
+    #     num /= -2
+    #     nums.append(num)
+    # print(f'Сумма элементов ряда чисел: {" ".join(map(str, nums))} = {sum(nums)}')
 
     # 2 variant
     n = int(input('Enter number n:'))
@@ -104,17 +107,16 @@ def task_5() -> None:
     по десять пар "код-символ" в каждой строке."""
 
     pair = 10
-    i = 1
     start = 32
     end = 127
     chars = []
     for el in range(end - start + 1):
-        chars.append(f'{start}"{chr(start)}"')
+        chars.append(f'{start}-{chr(start)}')
         start += 1
-        i += 1
-        if start == end + 1 or i > pair:
+        pair -= 1
+        if start == end + 1 or pair == 0:
             print('  '.join(chars) + '\n')
-            i = 1
+            pair = 10
             chars = []
 
 
@@ -124,6 +126,24 @@ def task_6() -> None:
     После каждой неудачной попытки должно сообщаться больше или меньше
     введенное пользователем число, чем то, что загадано.
     Если за 10 попыток число не отгадано, то вывести загаданное число."""
+
+    num = randint(0, 100)
+    # print(num)
+    cnt_try = 10
+    while cnt_try > 0:
+        num_user = int(input(f'Try №{cnt_try}. Enter the hidden number: '))
+        if num_user == num:
+            print(f'Congratulations! You guessed the number "{num}" on the {cnt_try}th try!')
+            break
+        elif num_user > num:
+            print('The entered number is greater')
+        else:
+            print('The entered number is less')
+        cnt_try -= 1
+        if cnt_try == 0:
+            print(f'You lose! The hidden number: "{num}"')
+            break
+    print('END.')
 
 
 def task_7() -> None:
@@ -148,8 +168,8 @@ if __name__ == "__main__":
     # task_2()
     # task_3()
     # task_4()
-    task_5()
+    # task_5()
     # task_6()
-    # task_7()
+    task_7()
     # task_8()
     # task_9()
