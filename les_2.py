@@ -151,6 +151,18 @@ def task_7() -> None:
     натуральных чисел выполняется равенство: 1+2+...+n = n(n+1)/2,
     где n - любое натуральное число."""
 
+    def recursion_7(x):
+        if x == 1:
+            return x
+        return x + recursion_7(x - 1)
+
+    n = int(input('Enter a natural number n: '))
+    res = (n ** 2 + n) / 2
+    if res == recursion_7(n):
+        print(f'Equality 1+2+...+n = n(n+1)/2 holds!: {recursion_7(n)} = {res:.0f}')
+    else:
+        print(f'Equality is not satisfied! {recursion_7(n)} != {res:.0f}')
+
 
 def task_8() -> None:
     """8. Посчитать, сколько раз встречается определенная цифра в введенной
