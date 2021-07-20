@@ -164,10 +164,20 @@ def task_7() -> None:
         print(f'Equality is not satisfied! {recursion_7(n)} != {res:.0f}')
 
 
-def task_8() -> None:
+def task_8(*nums) -> None:
     """8. Посчитать, сколько раз встречается определенная цифра в введенной
     последовательности чисел. Количество вводимых чисел и цифра, которую необходимо
     посчитать, задаются вводом с клавиатуры."""
+
+    if nums:
+        count_numbers, numeral = nums
+    else:
+        count_numbers, numeral = map(int, input('Enter the number of numbers and a digit: ').split())
+    numbers = [randint(0, 1000) for _ in range(count_numbers)]
+    print('Sequence of numbers: ', *numbers)
+    numbers = "".join(map(str, numbers))
+    count_numeral = numbers.count(str(numeral))
+    print(f'Numeral {numeral} meets {count_numeral} times')
 
 
 def task_9() -> None:
@@ -182,6 +192,6 @@ if __name__ == "__main__":
     # task_4()
     # task_5()
     # task_6()
-    task_7()
-    # task_8()
+    # task_7()
+    task_8(5, 1)
     # task_9()
