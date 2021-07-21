@@ -184,14 +184,26 @@ def task_9() -> None:
     """9. Среди натуральных чисел, которые были введены, найти наибольшее по сумме цифр.
     Вывести на экран это число и сумму его цифр."""
 
+    def get_sum_digits(number: int) -> int:
+        return sum([int(el) for el in str(number)])
+
+    nums = map(int, input('Enter numbers: ').split())
+    max_sum_digits = 0
+    for num in nums:
+        sum_digits = get_sum_digits(num)
+        if sum_digits > max_sum_digits:
+            max_sum_digits = sum_digits
+            result_num = num
+    print(f'Summa digits the number {result_num}: {max_sum_digits} ')
+
 
 if __name__ == "__main__":
-    # task_1()
+    task_1()
     # task_2()
     # task_3()
     # task_4()
     # task_5()
     # task_6()
     # task_7()
-    task_8(5, 1)
+    # task_8(5, 1)
     # task_9()
