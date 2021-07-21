@@ -132,6 +132,7 @@ def task_6() -> None:
     cnt_try = 10
     while cnt_try > 0:
         num_user = int(input(f'Try №{cnt_try}. Enter the hidden number: '))
+
         if num_user == num:
             print(f'Congratulations! You guessed the number "{num}" on the {cnt_try}th try!')
             break
@@ -194,11 +195,11 @@ def task_9() -> None:
         if sum_digits > max_sum_digits:
             max_sum_digits = sum_digits
             result_num = num
-    print(f'Summa digits the number {result_num}: {max_sum_digits} ')
+    print(f'The max sum of digits in a number {result_num}: {max_sum_digits} ')
 
 
 if __name__ == "__main__":
-    task_1()
+    # task_1()
     # task_2()
     # task_3()
     # task_4()
@@ -206,4 +207,4 @@ if __name__ == "__main__":
     # task_6()
     # task_7()
     # task_8(5, 1)
-    # task_9()
+    task_9()
