@@ -21,6 +21,13 @@ def task_2():
 def task_3():
     """3. В массиве случайных целых чисел поменять местами минимальный и максимальный элементы."""
 
+    nums = [8, 3, 15, 6, 4, 2]
+    idx_max_nums = nums.index(max(nums))
+    idx_min_nums = nums.index(min(nums))
+    nums[idx_min_nums], nums[idx_max_nums] = max(nums), min(nums)
+    # nums[nums.index(max(nums))], nums[nums.index(min(nums))] = min(nums), max(nums)
+    print(nums)
+
 
 def task_4():
     """4. Определить, какое число в массиве встречается чаще всего."""
@@ -53,8 +60,8 @@ def task_9():
 
 if __name__ == '__main__':
     # task_1()
-    task_2()
-    # task_3()
+    # task_2()
+    task_3()
     # task_4()
     # task_5()
     # task_6()
