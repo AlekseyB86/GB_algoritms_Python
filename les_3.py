@@ -21,25 +21,32 @@ def task_2() -> None:
 def task_3() -> None:
     """3. В массиве случайных целых чисел поменять местами минимальный и максимальный элементы."""
 
-    nums = [8, 3, 15, 6, 4, 2]
+    # nums = [8, 3, 15, 6, 4, 2]
+    nums = [1, 1, 1, 1]
     print(nums)
 
-    # # 1 variant
-    # idx_max_nums = nums.index(max(nums))
-    # idx_min_nums = nums.index(min(nums))
-    # nums[idx_min_nums], nums[idx_max_nums] = max(nums), min(nums)
+    # 1 variant
+    idx_mx = nums.index(max(nums))
+    idx_mn = nums.index(min(nums))
+    if idx_mx == idx_mn:
+        print('There is no maximum or minimum element in the array')
+    else:
+        nums[idx_mn], nums[idx_mx] = max(nums), min(nums)
+        print(nums)
 
-    # 2 variant
-    mx = mn = nums[0]
-    idx_mx = idx_mn = None
-    for idx, num in enumerate(nums):
-        if mx < num:
-            mx, idx_mx = num, idx
-        if mn > num:
-            mn, idx_mn = num, idx
-    nums[idx_mx], nums[idx_mn] = mn, mx
-
-    print(nums)
+    # # 2 variant
+    # mx = mn = nums[0]
+    # idx_mx = idx_mn = None
+    # for idx, num in enumerate(nums):
+    #     if mx < num:
+    #         mx, idx_mx = num, idx
+    #     if mn > num:
+    #         mn, idx_mn = num, idx
+    # if idx_mx == idx_mn:
+    #     print('There is no maximum or minimum element in the array')
+    # else:
+    #     nums[idx_mx], nums[idx_mn] = mn, mx
+    #     print(nums)
 
 
 def task_4() -> None:
@@ -59,6 +66,19 @@ def task_4() -> None:
 def task_5() -> None:
     """5. В массиве найти максимальный отрицательный элемент.
     Вывести на экран его значение и позицию в массиве."""
+
+    nums = [-12, 0, -999, 34, 4, -5]
+    mx_el = min(nums)
+    print(mx_el)
+    pos_el = None
+    for el in range(len(nums)):
+        if 0 > nums[el] > mx_el:
+            mx_el = nums[el]
+            pos_el = el + 1
+    if not pos_el:
+        print('There are no negative elements in the array!')
+    else:
+        print(f'Max negative element: {mx_el} pos {pos_el}')
 
 
 def task_6() -> None:
@@ -84,8 +104,8 @@ def task_9() -> None:
 if __name__ == '__main__':
     # task_1()
     # task_2()
-    # task_3()
-    task_4()
+    task_3()
+    # task_4()
     # task_5()
     # task_6()
     # task_7()
