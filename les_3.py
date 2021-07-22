@@ -1,4 +1,4 @@
-def task_1():
+def task_1() -> None:
     """1. В диапазоне натуральных чисел от 2 до 99 определить,
      сколько из них кратны каждому из чисел в диапазоне от 2 до 9."""
 
@@ -6,7 +6,7 @@ def task_1():
         print(f'{num}: {len([el for el in range(2, 100) if el % num == 0])}')
 
 
-def task_2():
+def task_2() -> None:
     """2. Во втором массиве сохранить индексы четных элементов первого массива.
     Например, если дан массив со значениями 8, 3, 15, 6, 4, 2, то во второй массив
     надо заполнить значениями 1, 4, 5, 6 (или 0, 3, 4, 5 - если индексация начинается
@@ -18,51 +18,74 @@ def task_2():
     print(*second_array)
 
 
-def task_3():
+def task_3() -> None:
     """3. В массиве случайных целых чисел поменять местами минимальный и максимальный элементы."""
 
     nums = [8, 3, 15, 6, 4, 2]
-    idx_max_nums = nums.index(max(nums))
-    idx_min_nums = nums.index(min(nums))
-    nums[idx_min_nums], nums[idx_max_nums] = max(nums), min(nums)
-    # nums[nums.index(max(nums))], nums[nums.index(min(nums))] = min(nums), max(nums)
+    print(nums)
+
+    # # 1 variant
+    # idx_max_nums = nums.index(max(nums))
+    # idx_min_nums = nums.index(min(nums))
+    # nums[idx_min_nums], nums[idx_max_nums] = max(nums), min(nums)
+
+    # 2 variant
+    mx = mn = nums[0]
+    idx_mx = idx_mn = None
+    for idx, num in enumerate(nums):
+        if mx < num:
+            mx, idx_mx = num, idx
+        if mn > num:
+            mn, idx_mn = num, idx
+    nums[idx_mx], nums[idx_mn] = mn, mx
+
     print(nums)
 
 
-def task_4():
+def task_4() -> None:
     """4. Определить, какое число в массиве встречается чаще всего."""
 
+    nums = [3, 12, 34, 658, 3, 94, 456, 45, 8, 9, 12, 3, 76, 987]
 
-def task_5():
+    cnt = 0
+    num = None
+    for el in nums:
+        if nums.count(el) > cnt:
+            cnt = nums.count(el)
+            num = el
+    print(f'Number {num} occurs most often: {cnt} times')
+
+
+def task_5() -> None:
     """5. В массиве найти максимальный отрицательный элемент.
     Вывести на экран его значение и позицию в массиве."""
 
 
-def task_6():
+def task_6() -> None:
     """6. В одномерном массиве найти сумму элементов, находящихся между минимальным и максимальным элементами.
     Сами минимальный и максимальный элементы в сумму не включать."""
 
 
-def task_7():
+def task_7() -> None:
     """7. В одномерном массиве целых чисел определить два наименьших элемента.
     Они могут быть как равны между собой (оба являться минимальными), так и различаться."""
 
 
-def task_8():
+def task_8() -> None:
     """8. Матрица 5x4 заполняется вводом с клавиатуры кроме последних элементов строк.
     Программа должна вычислять сумму введенных элементов каждой строки и записывать ее
     в последнюю ячейку строки. В конце следует вывести полученную матрицу."""
 
 
-def task_9():
+def task_9() -> None:
     """9. Найти максимальный элемент среди минимальных элементов столбцов матрицы."""
 
 
 if __name__ == '__main__':
     # task_1()
     # task_2()
-    task_3()
-    # task_4()
+    # task_3()
+    task_4()
     # task_5()
     # task_6()
     # task_7()
