@@ -23,7 +23,7 @@ def task_3() -> None:
 
     # nums = [8, 3, 15, 6, 4, 2]
     nums = [1, 1, 1, 1]
-    print(nums)
+    print(*nums)
 
     # 1 variant
     idx_mx = nums.index(max(nums))
@@ -32,7 +32,7 @@ def task_3() -> None:
         print('There is no maximum or minimum element in the array')
     else:
         nums[idx_mn], nums[idx_mx] = max(nums), min(nums)
-        print(nums)
+        print(*nums)
 
     # # 2 variant
     # mx = mn = nums[0]
@@ -53,7 +53,7 @@ def task_4() -> None:
     """4. Определить, какое число в массиве встречается чаще всего."""
 
     nums = [3, 12, 34, 658, 3, 94, 456, 45, 8, 9, 12, 3, 76, 987]
-
+    print(*nums)
     cnt = 0
     num = None
     for el in nums:
@@ -68,6 +68,7 @@ def task_5() -> None:
     Вывести на экран его значение и позицию в массиве."""
 
     nums = [-12, 0, -999, 34, 4, -5]
+    print(*nums)
     mx_el = min(nums)
     print(mx_el)
     pos_el = None
@@ -84,6 +85,15 @@ def task_5() -> None:
 def task_6() -> None:
     """6. В одномерном массиве найти сумму элементов, находящихся между минимальным и максимальным элементами.
     Сами минимальный и максимальный элементы в сумму не включать."""
+
+    nums = [12, 0, -9, 34, 4, -5]
+    print(*nums)
+    # # 1 variant
+    # print('Sum of elements between max and min: ', sum(nums) - min(nums) - max(nums))
+
+    # 2 variant
+    nums.sort()
+    print('Sum of elements between max and min: ', sum(nums[1:-1]))
 
 
 def task_7() -> None:
@@ -104,10 +114,10 @@ def task_9() -> None:
 if __name__ == '__main__':
     # task_1()
     # task_2()
-    task_3()
+    # task_3()
     # task_4()
     # task_5()
-    # task_6()
+    task_6()
     # task_7()
     # task_8()
     # task_9()
