@@ -113,46 +113,57 @@ def task_8() -> None:
     Программа должна вычислять сумму введенных элементов каждой строки и записывать ее
     в последнюю ячейку строки. В конце следует вывести полученную матрицу."""
 
+    m = 5
+    n = 4
+    arr = []
+    for i in range(n):
+        lst = list(map(int, input(f'{i + 1}. Enter {n} numbers: ').split()))
+        arr.append(lst + [sum(lst)])
+    for i in range(n):
+        for j in range(m):
+            print(f'{arr[i][j]:3d}', end="")
+        print()
+
 
 def task_9() -> None:
     """9. Найти максимальный элемент среди минимальных элементов столбцов матрицы."""
 
-    M = 10
-    N = 5
+    m = 10
+    n = 5
     a = []
-    for i in range(N):
+    for i in range(n):
         b = []
-        for j in range(M):
+        for j in range(m):
             b.append(int(random() * 11))
             print(f'{b[j]:3d}', end="")
         a.append(b)
         print()
 
     min_nums = []
-    for j in range(M):
+    for j in range(m):
         min_el = a[0][j]
-        for i in range(N):
+        for i in range(n):
             if a[i][j] < min_el:
                 min_el = a[i][j]
         min_nums.append(min_el)
 
-    for i in range(M):
+    for i in range(m):
         print(" --", end="")
     print()
 
-    for i in range(M):
+    for i in range(m):
         print(f'{min_nums[i]:3d}', end="")
     print(' - min elements')
 
     max_el = min_nums[0]
-    for i in range(M):
+    for i in range(m):
         if min_nums[i] > max_el:
             max_el = min_nums[i]
     print('Max element of the min: ', max_el)
 
 
 if __name__ == '__main__':
-    # task_1()
+    task_1()
     # task_2()
     # task_3()
     # task_4()
@@ -160,4 +171,4 @@ if __name__ == '__main__':
     # task_6()
     # task_7()
     # task_8()
-    task_9()
+    # task_9()
