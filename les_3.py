@@ -1,3 +1,6 @@
+from random import random
+
+
 def task_1() -> None:
     """1. В диапазоне натуральных чисел от 2 до 99 определить,
      сколько из них кратны каждому из чисел в диапазоне от 2 до 9."""
@@ -114,6 +117,39 @@ def task_8() -> None:
 def task_9() -> None:
     """9. Найти максимальный элемент среди минимальных элементов столбцов матрицы."""
 
+    M = 10
+    N = 5
+    a = []
+    for i in range(N):
+        b = []
+        for j in range(M):
+            b.append(int(random() * 11))
+            print(f'{b[j]:3d}', end="")
+        a.append(b)
+        print()
+
+    min_nums = []
+    for j in range(M):
+        min_el = a[0][j]
+        for i in range(N):
+            if a[i][j] < min_el:
+                min_el = a[i][j]
+        min_nums.append(min_el)
+
+    for i in range(M):
+        print(" --", end="")
+    print()
+
+    for i in range(M):
+        print(f'{min_nums[i]:3d}', end="")
+    print(' - min elements')
+
+    max_el = min_nums[0]
+    for i in range(M):
+        if min_nums[i] > max_el:
+            max_el = min_nums[i]
+    print('Max element of the min: ', max_el)
+
 
 if __name__ == '__main__':
     # task_1()
@@ -122,6 +158,6 @@ if __name__ == '__main__':
     # task_4()
     # task_5()
     # task_6()
-    task_7()
+    # task_7()
     # task_8()
-    # task_9()
+    task_9()
