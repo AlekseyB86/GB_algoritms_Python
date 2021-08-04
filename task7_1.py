@@ -5,7 +5,6 @@
 По возможности доработайте алгоритм (сделайте его умнее)."""
 
 from random import randint
-import cProfile
 
 
 def sort_p(lst: list) -> list:  # Пузырьковая сортировка из урока
