@@ -4,34 +4,44 @@
 # в другой – не больше медианы. Задачу можно решить без сортировки исходного массива.
 # Но если это слишком сложно, то используйте метод сортировки, который не рассматривался на уроках
 
-from random import random
+import random
 
 
-def get_median(lst: list) -> int:
+def quick_select_median(lst: list, pivot_fn=random.choice) -> float:
+    if len(lst) % 2 == 1:
+        return quick_select(lst, len(lst) // 2, pivot_fn)
+    else:
+        return 0.5 * (quick_select(lst, len(lst) // 2 - 1, pivot_fn) +
+                      quick_select(lst, len(lst) // 2, pivot_fn))
+
+
+def quick_select(lst: list, k: int, pivot_fn) -> int:
     """
-    Функция нахождения индекса медианы в массиве
-    :param lst:
-    :return: index median
+    Выбираем k-тый элемент в списке lst (с нулевой базой)
+    :param lst: список числовых данных
+    :param k: индекс
+    :param pivot_fn: функция выбора pivot, по умолчанию выбирает случайно
+    :return: k-тый элемент lst
     """
-    median = lst[len(lst) // 2]
-    less = [el for el in lst if el < median]
-    greater = [el for el in lst if el > median]
-    delta = len(less) - len(greater)
-    while delta:
-        if delta > 0:
-            greater.append(median)
-            median = max(less)
-            less.remove(max(less))
-        else:
-            less.append(median)
-            median = min(greater)
-            greater.remove(min(greater))
-        delta = len(less) - len(greater)
+    if len(lst) == 1:
+        assert k == 0
+        return lst[0]
 
-    return median
+    pivot = pivot_fn(lst)
+
+    lows = [el for el in lst if el < pivot]
+    highs = [el for el in lst if el > pivot]
+    pivots = [el for el in lst if el == pivot]
+
+    if k < len(lows):
+        return quick_select(lows, k, pivot_fn)
+    elif k < len(lows) + len(pivots):
+        return pivots[0]
+    else:
+        return quick_select(highs, k - len(lows) - len(pivots), pivot_fn)
 
 
-m = 10
-arr = [int(100 * random()) for _ in range(2 * m + 1)]
+m = 5
+arr = [int(random.uniform(-50, 50)) for _ in range(2 * m + 1)]
 print(arr)
-print(f'Медиана массива: {get_median(arr)}')
+print(f'Медиана массива: {quick_select_median(arr)}')

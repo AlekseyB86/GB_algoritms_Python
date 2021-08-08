@@ -7,7 +7,12 @@ import operator
 
 
 def merge_sort(arr: list, compare=True) -> list:
-    """Сортировка методом слияния, по умолчанию True- сортировка на возрастание, False- на убывание """
+    """
+    Сортировка методом слияния
+    :param arr: массив чисел
+    :param compare:  по умолчанию True- на возрастание, False- на убывание
+    :return list: отсортированный массив чисел
+    """
     if len(arr) < 2:
         return arr[:]
 
